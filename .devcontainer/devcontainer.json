@@ -1,0 +1,8 @@
+{
+  "name": "PHP DevContainer",
+  "image": "vasiliishavkin/php:7.4-development",
+  "forwardPorts": [80],
+  "workspaceMount": "source=${localWorkspaceFolder}/app,target=/app,type=bind,consistency=delegated",
+  "postCreateCommand": "/bin/bash /app/start_dev_server.sh",
+  "workspaceFolder": "/app"
+}
