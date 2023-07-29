@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  php:
+    image: vasiliishavkin/php:7.4-development
+    ports:
+      - "80:80"
+    volumes:
+      - "./app:/app"
+    entrypoint: ["/app/start-dev-server.sh"]

@@ -1,8 +1,6 @@
 {
   "name": "PHP DevContainer",
-  "image": "vasiliishavkin/php:7.4-development",
-  "forwardPorts": [80],
-  "workspaceMount": "source=${localWorkspaceFolder}/app,target=/app,type=bind,consistency=delegated",
-  "postCreateCommand": "/bin/bash /app/start_dev_server.sh",
-  "workspaceFolder": "/app"
+  "dockerComposeFile": "../compose.yml", // Point to the docker-compose.yml file you created
+  "service": "php", // Specify the service name for PHP in the docker-compose.yml
+  "workspaceFolder": "/app" // Match the workspace folder to the mounted volume in the docker-compose.ym
 }
