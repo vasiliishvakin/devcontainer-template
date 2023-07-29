@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it mysql sh -c 'exec mariadb -uroot -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE"' $@
