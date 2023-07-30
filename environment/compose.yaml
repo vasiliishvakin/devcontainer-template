@@ -1,7 +1,7 @@
 version: "3"
 services:
   php:
-    image: vasiliishavkin/php:__version__-development
+    image: vasiliishavkin/php:5.6-development
     container_name: php
     ports:
       - "80:80"

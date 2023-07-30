@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Xdebug@DevContainer",
+      "type": "php",
+      "request": "launch",
+      "port": 9000,
+      "pathMappings": {
+        "/app": "${workspaceFolder}"
+      },
+      "log": true,
+      "ignore": ["**/vendor/**/*.php"]
+    }
+  ]
+}
