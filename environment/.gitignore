@@ -6,5 +6,6 @@ php/conf.d
 mysql/conf.d
 
 mysql_db
+caddy_data
 cache
 

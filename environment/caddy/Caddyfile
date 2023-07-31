@@ -1,0 +1,25 @@
+{
+    auto_https off
+    servers {
+		metrics
+	}
+}
+
+
+localhost:80 {
+    root * /app/public
+
+    # Set up reverse proxy to PHP embedded web server
+    reverse_proxy php:8080 {
+        header_up X-Real-IP {remote}
+    }
+
+    # Serve static files (CSS, JS, HTML) from the "public" directory with gzip
+    handle_path /*.css|*.js|*.html {
+        file_server
+        encode gzip
+    }
+
+    # Serve other static files from the "public" directory without gzip
+
+}

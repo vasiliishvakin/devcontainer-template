@@ -1,10 +1,23 @@
 version: "3"
 services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    ports:
+      - "80:80"
+    volumes:
+      - "../app:/app"
+      - "./caddy_data:/data"
+      - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    working_dir: /app
+
   php:
     image: vasiliishavkin/php:7.4-development
     container_name: php
     ports:
-      - "80:80"
+      - "8080:8080"
     volumes:
       - "../app:/app"
       - "../.vscode:/app/.vscode"
