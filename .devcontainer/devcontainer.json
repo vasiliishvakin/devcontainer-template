@@ -1,6 +1,6 @@
 {
   "name": "PHP DevContainer",
-  "dockerComposeFile": "../environment/compose.yaml",
+  "dockerComposeFile": "./compose.yaml",
   "service": "php",
   "workspaceFolder": "/app",
   "remoteEnv": {

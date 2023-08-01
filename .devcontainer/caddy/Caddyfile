@@ -1,0 +1,11 @@
+{
+    auto_https off
+    servers {
+		metrics
+	}
+}
+
+:80 {
+    root /app/public
+    file_server
+}
