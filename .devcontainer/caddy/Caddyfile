@@ -26,7 +26,7 @@
 
     file_server
 
-	root * /workspace/src/public
+	root * /workspace/app/public
 
     @denied {
         path /.*
@@ -65,7 +65,7 @@
 	}
 
     php_fastcgi php:9000 {
-		root /workspace/src/public
+		root /workspace/app/public
 		dial_timeout 5m
 		read_timeout 5m
 		write_timeout 5m
