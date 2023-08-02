@@ -1,0 +1,47 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "PhpXdebug@DevContainer",
+                "type": "php",
+                "request": "launch",
+                "port": 9003,
+                "pathMappings": {
+                    "/workspace": "${workspaceFolder}"
+                },
+                "log": true,
+                "internalConsoleOptions": "neverOpen"
+            }
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "bierner.markdown-mermaid",
+            "bmewburn.vscode-intelephense-client",
+            "calebporzio.better-phpunit",
+            "christian-kohler.path-intellisense",
+            "dbaeumer.vscode-eslint",
+            "DEVSENSE.composer-php-vscode",
+            "DEVSENSE.profiler-php-vscode",
+            "dotenv.dotenv-vscode",
+            "EditorConfig.EditorConfig",
+            "esbenp.prettier-vscode",
+            "fractalbrew.backticks",
+            "naumovs.color-highlight",
+            "neilbrayfield.php-docblocker",
+            "oderwat.indent-rainbow",
+            "redhat.vscode-xml",
+            "redhat.vscode-yaml",
+            "rvest.vs-code-prettier-eslint",
+            "Tyriar.sort-lines",
+            "xdebug.php-debug",
+            "ZainChen.json"
+        ]
+    }
+}

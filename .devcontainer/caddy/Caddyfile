@@ -1,11 +1,75 @@
 {
-    auto_https off
-    servers {
+	auto_https off
+	servers {
 		metrics
+		timeouts {
+			read_body 5m
+			read_header 5m
+			write 5m
+			idle 5m
+		}
+	}
+	admin off
+	log {
+		output stdout
+		format console
+		level info
 	}
 }
 
 :80 {
-    root /app/public
+	log {
+		output stdout
+		format console
+		level info
+	}
+
     file_server
+
+	root * /workspace/src/public
+
+    @denied {
+        path /.*
+    }
+	respond @denied "Access denied" 403
+
+	@static {
+		file
+		path *.ico *.css *.js *.gif *.webp *.avif *.jpg *.jpeg *.png *.svg *.woff *.woff2
+	}
+	@html {
+		file
+		path *.html
+	}
+	header @static Cache-Control max-age=5184000,must-revalidate
+
+	header @html Cache-Control max-age=300,must-revalidate
+
+	encode {
+		gzip
+		zstd
+
+		match {
+			status 200
+		}
+	}
+
+	metrics /metrics
+
+	php_fastcgi /status php:9000 {
+		env SCRIPT_NAME /status
+	}
+
+    php_fastcgi /ping php:9000 {
+		env SCRIPT_NAME /ping
+	}
+
+    php_fastcgi php:9000 {
+		root /workspace/src/public
+		dial_timeout 5m
+		read_timeout 5m
+		write_timeout 5m
+		capture_stderr info
+		health_uri /ping
+	}
 }
