@@ -9,9 +9,10 @@ services:
             - "../:/workspace"
             - "../cache/composer:/root/.cache/composer"
             - "../cache/vscode-extensions-cache:/vscode/vscode-server/extensionsCache"
+            - "/var/run/docker.sock:/var/run/docker.sock"
         extra_hosts:
             - "host.docker.internal:host-gateway"
-        working_dir: /app
+        working_dir: /workspace/app
 
     caddy:
         image: caddy:2-alpine
@@ -24,7 +25,7 @@ services:
             - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
         extra_hosts:
             - "host.docker.internal:host-gateway"
-        working_dir: /app
+        working_dir: /workspace/app
 
     mysql:
         image: mariadb:latest

@@ -33,6 +33,7 @@
             "EditorConfig.EditorConfig",
             "esbenp.prettier-vscode",
             "fractalbrew.backticks",
+            "ms-azuretools.vscode-docker",
             "naumovs.color-highlight",
             "neilbrayfield.php-docblocker",
             "oderwat.indent-rainbow",
