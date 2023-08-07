@@ -1,53 +1,45 @@
 {
-  "name": "PHP DevContainer",
-  "dockerComposeFile": "../environment/compose.yaml",
-  "service": "php",
-  "workspaceFolder": "/app",
-  "remoteEnv": {
-    "compose": "docker compose"
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "bierner.markdown-mermaid",
-        "bmewburn.vscode-intelephense-client",
-        "bradlc.vscode-tailwindcss",
-        "calebporzio.better-phpunit",
-        "christian-kohler.path-intellisense",
-        "chrmarti.regex",
-        "dbaeumer.vscode-eslint",
-        "DEVSENSE.composer-php-vscode",
-        "DEVSENSE.profiler-php-vscode",
-        "diz.ecsstractor-port",
-        "dotenv.dotenv-vscode",
-        "EditorConfig.EditorConfig",
-        "esbenp.prettier-vscode",
-        "formulahendry.code-runner",
-        "fractalbrew.backticks",
-        "GitHub.copilot",
-        "jasonlhy.hungry-delete",
-        "naumovs.color-highlight",
-        "neilbrayfield.php-docblocker",
-        "oderwat.indent-rainbow",
-        "onecentlin.laravel-blade",
-        "open-southeners.laravel-pint",
-        "open-southeners.php-support-utils",
-        "pranaygp.vscode-css-peek",
-        "pustelto.bracketeer",
-        "rafamel.subtle-brackets",
-        "RapidAPI.vscode-rapidapi-client",
-        "rapidapi.vscode-services",
-        "redhat.vscode-xml",
-        "redhat.vscode-yaml",
-        "rvest.vs-code-prettier-eslint",
-        "sleistner.vscode-fileutils",
-        "streetsidesoftware.code-spell-checker",
-        "syler.sass-indented",
-        "Tyriar.sort-lines",
-        "wix.vscode-import-cost",
-        "xdebug.php-debug",
-        "ZainChen.json"
-      ]
+    "name": "PHP DevContainer",
+    "dockerComposeFile": "./compose.yaml",
+    "service": "python",
+    "workspaceFolder": "/workspace",
+    "remoteEnv": {
+        "compose": "docker compose"
+    },
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bierner.markdown-mermaid",
+                "bradlc.vscode-tailwindcss",
+                "chrmarti.regex",
+                "dbaeumer.vscode-eslint",
+                "diz.ecsstractor-port",
+                "dotenv.dotenv-vscode",
+                "EditorConfig.EditorConfig",
+                "esbenp.prettier-vscode",
+                "formulahendry.code-runner",
+                "fractalbrew.backticks",
+                "GitHub.copilot",
+                "jasonlhy.hungry-delete",
+                "ms-python.python",
+                "naumovs.color-highlight",
+                "oderwat.indent-rainbow",
+                "pranaygp.vscode-css-peek",
+                "pustelto.bracketeer",
+                "rafamel.subtle-brackets",
+                "RapidAPI.vscode-rapidapi-client",
+                "rapidapi.vscode-services",
+                "redhat.vscode-xml",
+                "redhat.vscode-yaml",
+                "rvest.vs-code-prettier-eslint",
+                "sleistner.vscode-fileutils",
+                "streetsidesoftware.code-spell-checker",
+                "syler.sass-indented",
+                "Tyriar.sort-lines",
+                "wix.vscode-import-cost",
+                "ZainChen.json"
+            ]
+        }
     }
-  }
 }
