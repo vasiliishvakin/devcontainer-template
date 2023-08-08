@@ -21,7 +21,8 @@ services:
             - "0.0.0.0:80:80"
         volumes:
             - "../:/workspace"
-            - "../data/caddy:/data"
+            - "../data/caddy/data:/data"
+            - "../data/caddy/config:/data"
             - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
         extra_hosts:
             - "host.docker.internal:host-gateway"

@@ -9,7 +9,6 @@
 			idle 5m
 		}
 	}
-	admin off
 	log {
 		output stdout
 		format console
