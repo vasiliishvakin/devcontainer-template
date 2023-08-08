@@ -2,13 +2,18 @@ version: "3"
 services:
     python:
         image: vasiliishvakin/python:3-development
-        container_name: python
+        container_name: ${COMPOSE_PROJECT_NAME}_python
+        networks:
+            default:
+                aliases:
+                    - python
         ports:
             - "0.0.0.0:8080:8080"
         volumes:
             - "../:/workspace"
             - "/var/run/docker.sock:/var/run/docker.sock"
             - "./python/stub.py:/usr/local/lib/python-stub/stub.py"
+            - "../data/bash/bash_history:/root/.bash_history"
         extra_hosts:
             - "host.docker.internal:host-gateway"
         working_dir: /workspace/app
@@ -16,7 +21,11 @@ services:
 
     caddy:
         image: caddy:2-alpine
-        container_name: caddy
+        container_name: ${COMPOSE_PROJECT_NAME}_caddy
+        networks:
+            default:
+                aliases:
+                    - caddy
         ports:
             - "0.0.0.0:80:80"
         volumes:
@@ -30,7 +39,11 @@ services:
 
     mysql:
         image: mariadb:latest
-        container_name: mysql
+        container_name: ${COMPOSE_PROJECT_NAME}_mysql
+        networks:
+            default:
+                aliases:
+                    - mysql
         ports:
             - "0.0.0.0:3306:3306"
         volumes:
@@ -43,3 +56,6 @@ services:
             MYSQL_PASSWORD: ${MYSQL_PASSWORD:-user}
         extra_hosts:
             - "host.docker.internal:host-gateway"
+networks:
+    default:
+        name: ${COMPOSE_PROJECT_NAME}-network
