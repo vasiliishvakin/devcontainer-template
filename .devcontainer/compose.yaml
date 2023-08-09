@@ -1,7 +1,7 @@
 version: "3"
 services:
     php:
-        image: vasiliishvakin/php:7.4-fpm-development
+        image: vasiliishvakin/php:8.2-fpm-development
         container_name: ${COMPOSE_PROJECT_NAME}_php
         networks:
             default:
