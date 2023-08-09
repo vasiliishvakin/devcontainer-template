@@ -1,7 +1,7 @@
 {
-    "name": "PHP DevContainer",
+    "name": "Node DevContainer",
     "dockerComposeFile": "./compose.yaml",
-    "service": "container_name",
+    "service": "node",
     "workspaceFolder": "/workspace",
     "remoteEnv": {
         "compose": "docker compose"

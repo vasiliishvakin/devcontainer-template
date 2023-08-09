@@ -4,22 +4,6 @@
             "path": "."
         }
     ],
-    "launch": {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "name": "PhpXdebug@DevContainer",
-                "type": "php",
-                "request": "launch",
-                "port": 9003,
-                "pathMappings": {
-                    "/workspace": "${workspaceFolder}"
-                },
-                "log": true,
-                "internalConsoleOptions": "neverOpen"
-            }
-        ]
-    },
     "extensions": {
         "recommendations": [
             "bierner.markdown-mermaid",

@@ -23,13 +23,13 @@
 		level info
 	}
 
-    file_server
+	file_server
 
 	root * /workspace/app/public
 
-    @denied {
-        path /.*
-    }
+	@denied {
+		path /.*
+	}
 	respond @denied "Access denied" 403
 
 	@static {
@@ -54,4 +54,9 @@
 	}
 
 	metrics /metrics
+
+    rewrite / /index.html
+
+	@notStatic not file
+	reverse_proxy @notStatic python:8080
 }
