@@ -7,34 +7,20 @@
     "extensions": {
         "recommendations": [
             "bierner.markdown-mermaid",
-<<<<<<< HEAD:php.code-workspace
             "bmewburn.vscode-intelephense-client",
-            "calebporzio.better-phpunit",
-            "christian-kohler.path-intellisense",
-=======
->>>>>>> origin/python3:workspace.code-workspace
             "dbaeumer.vscode-eslint",
-            "DEVSENSE.composer-php-vscode",
-            "DEVSENSE.profiler-php-vscode",
             "dotenv.dotenv-vscode",
             "EditorConfig.EditorConfig",
             "esbenp.prettier-vscode",
             "fractalbrew.backticks",
             "ms-azuretools.vscode-docker",
-            "ms-python.autopep8",
-            "ms-python.python",
             "naumovs.color-highlight",
-            "neilbrayfield.php-docblocker",
             "oderwat.indent-rainbow",
             "redhat.vscode-xml",
             "redhat.vscode-yaml",
             "rvest.vs-code-prettier-eslint",
             "Tyriar.sort-lines",
-            "xdebug.php-debug",
             "ZainChen.json"
         ]
-    },
-    "settings": {
-        "intelephense.environment.phpVersion": "7.4"
     }
 }
