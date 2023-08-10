@@ -1,0 +1,62 @@
+{
+	auto_https off
+	servers {
+		metrics
+		timeouts {
+			read_body 5m
+			read_header 5m
+			write 5m
+			idle 5m
+		}
+	}
+	log {
+		output stdout
+		format console
+		level info
+	}
+}
+
+:80 {
+	log {
+		output stdout
+		format console
+		level info
+	}
+
+	file_server
+
+	root * /workspace/app/public
+
+	@denied {
+		path /.*
+	}
+	respond @denied "Access denied" 403
+
+	@static {
+		file
+		path *.ico *.css *.js *.gif *.webp *.avif *.jpg *.jpeg *.png *.svg *.woff *.woff2
+	}
+	@html {
+		file
+		path *.html
+	}
+	header @static Cache-Control max-age=5184000,must-revalidate
+
+	header @html Cache-Control max-age=300,must-revalidate
+
+	encode {
+		gzip
+		zstd
+
+		match {
+			status 200
+		}
+	}
+
+	metrics /metrics
+
+    rewrite / /index.html
+
+	@notStatic not file
+	reverse_proxy @notStatic python:8080
+}
