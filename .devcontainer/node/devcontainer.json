@@ -1,0 +1,42 @@
+{
+    "name": "Node DevContainer",
+    "dockerComposeFile": "./compose.yaml",
+    "service": "node",
+    "workspaceFolder": "/workspace",
+    "remoteEnv": {
+        "compose": "docker compose"
+    },
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bierner.markdown-mermaid",
+                "bradlc.vscode-tailwindcss",
+                "chrmarti.regex",
+                "dbaeumer.vscode-eslint",
+                "diz.ecsstractor-port",
+                "dotenv.dotenv-vscode",
+                "EditorConfig.EditorConfig",
+                "esbenp.prettier-vscode",
+                "fractalbrew.backticks",
+                "jasonlhy.hungry-delete",
+                "naumovs.color-highlight",
+                "oderwat.indent-rainbow",
+                "pranaygp.vscode-css-peek",
+                "pustelto.bracketeer",
+                "rafamel.subtle-brackets",
+                "RapidAPI.vscode-rapidapi-client",
+                "rapidapi.vscode-services",
+                "redhat.vscode-xml",
+                "redhat.vscode-yaml",
+                "rvest.vs-code-prettier-eslint",
+                "sleistner.vscode-fileutils",
+                "streetsidesoftware.code-spell-checker",
+                "syler.sass-indented",
+                "Tyriar.sort-lines",
+                "wix.vscode-import-cost",
+                "ZainChen.json"
+            ]
+        }
+    }
+}

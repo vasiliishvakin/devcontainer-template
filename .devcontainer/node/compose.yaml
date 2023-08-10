@@ -1,0 +1,61 @@
+version: "3"
+services:
+    node:
+        image: vasiliishvakin/node:development
+        container_name: ${COMPOSE_PROJECT_NAME}_node
+        networks:
+            default:
+                aliases:
+                    - node
+        ports:
+            - "0.0.0.0:8080:8080"
+        volumes:
+            - "../:/workspace"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "./node/stub.js:/usr/local/lib/node-stub/stub.js"
+            - "../data/bash/bash_history:/root/.bash_history"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        working_dir: /workspace/app
+        command: ["node", "/usr/local/lib/node-stub/stub.js"]
+
+    caddy:
+        image: caddy:2-alpine
+        container_name: ${COMPOSE_PROJECT_NAME}_caddy
+        networks:
+            default:
+                aliases:
+                    - caddy
+        ports:
+            - "0.0.0.0:80:80"
+        volumes:
+            - "../:/workspace"
+            - "../data/caddy/data:/data"
+            - "../data/caddy/config:/data"
+            - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        working_dir: /workspace/app
+
+    mysql:
+        image: mariadb:latest
+        container_name: ${COMPOSE_PROJECT_NAME}_mysql
+        networks:
+            default:
+                aliases:
+                    - mysql
+        ports:
+            - "0.0.0.0:3306:3306"
+        volumes:
+            - "../data/mysql:/var/lib/mysql"
+            - "./mysql/conf.d:/etc/mysql/conf.d"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+            MYSQL_DATABASE: ${MYSQL_DATABASE:-app}
+            MYSQL_USER: ${MYSQL_USER:-user}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD:-user}
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+networks:
+    default:
+        name: ${COMPOSE_PROJECT_NAME}-network
