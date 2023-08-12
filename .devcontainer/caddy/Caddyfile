@@ -53,22 +53,31 @@
 		}
 	}
 
-	metrics /metrics
+	metrics /caddy-metrics
 
-	php_fastcgi /status php:9000 {
+	php_fastcgi /php-status php:9000 {
 		env SCRIPT_NAME /status
 	}
 
-    php_fastcgi /ping php:9000 {
+    php_fastcgi /php-ping php:9000 {
 		env SCRIPT_NAME /ping
 	}
 
-    php_fastcgi php:9000 {
-		root /workspace/app/public
-		dial_timeout 5m
-		read_timeout 5m
-		write_timeout 5m
-		capture_stderr info
-		health_uri /ping
-	}
+    @phpPathPrefix path /php*
+    php_fastcgi @phpPathPrefix {
+        root /workspace/app/php/public
+        dial_timeout 5m
+        read_timeout 5m
+        write_timeout 5m
+        capture_stderr info
+        health_uri /ping
+    }
+
+    @notStatic not file
+
+    @pythonPathPrefix path /python*
+    reverse_proxy @pythonPathPrefix @notStatic python:8000
+
+    @nodePathPrefix path /node*
+    reverse_proxy @nodePathPrefix @notStatic node:7000
 }

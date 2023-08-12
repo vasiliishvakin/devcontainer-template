@@ -1,0 +1,3 @@
+php -v
+node -v
+exit

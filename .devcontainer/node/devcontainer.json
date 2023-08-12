@@ -1,12 +1,12 @@
 {
     "name": "Node DevContainer",
-    "dockerComposeFile": "./compose.yaml",
+    "dockerComposeFile": "../compose.yaml",
     "service": "node",
     "workspaceFolder": "/workspace",
     "remoteEnv": {
         "compose": "docker compose"
     },
-    "shutdownAction": "stopCompose",
+    "shutdownAction": "none",
     "customizations": {
         "vscode": {
             "extensions": [

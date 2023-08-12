@@ -1,5 +1,24 @@
 version: "3"
 services:
+    php:
+        image: vasiliishvakin/php:8.2-fpm-development
+        container_name: ${COMPOSE_PROJECT_NAME}_php
+        networks:
+            default:
+                aliases:
+                    - php
+        ports:
+            - "0.0.0.0:9000:9000"
+        volumes:
+            - "../:/workspace"
+            - "../cache/composer:/root/.cache/composer"
+            - "../cache/vscode-extensions-cache:/vscode/vscode-server/extensionsCache"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "../data/bash/bash_history_php:/root/.bash_history"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        working_dir: /workspace/app/php
+
     python:
         image: vasiliishvakin/python:3-development
         container_name: ${COMPOSE_PROJECT_NAME}_python
@@ -8,17 +27,35 @@ services:
                 aliases:
                     - python
         ports:
-            - "0.0.0.0:8080:8080"
+            - "0.0.0.0:8000:8000"
         volumes:
             - "../:/workspace"
             - "/var/run/docker.sock:/var/run/docker.sock"
             - "./python/stub.py:/usr/local/lib/python-stub/stub.py"
-            - "../data/bash/bash_history:/root/.bash_history"
+            - "../data/bash/bash_history_python:/root/.bash_history"
         extra_hosts:
             - "host.docker.internal:host-gateway"
-        working_dir: /workspace/app
+        working_dir: /workspace/app/python
         command: ["python3", "/usr/local/lib/python-stub/stub.py"]
 
+    node:
+        image: vasiliishvakin/node:development
+        container_name: ${COMPOSE_PROJECT_NAME}_node
+        networks:
+            default:
+                aliases:
+                    - node
+        ports:
+            - "0.0.0.0:7000:7000"
+        volumes:
+            - "../:/workspace"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "./node/stub.js:/usr/local/lib/node-stub/stub.js"
+            - "../data/bash/bash_history_node:/root/.bash_history"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        working_dir: /workspace/app/node
+        command: ["node", "/usr/local/lib/node-stub/stub.js"]
     caddy:
         image: caddy:2-alpine
         container_name: ${COMPOSE_PROJECT_NAME}_caddy
@@ -30,8 +67,7 @@ services:
             - "0.0.0.0:80:80"
         volumes:
             - "../:/workspace"
-            - "../data/caddy/data:/data"
-            - "../data/caddy/config:/data"
+            - "../data/caddy:/data"
             - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
         extra_hosts:
             - "host.docker.internal:host-gateway"

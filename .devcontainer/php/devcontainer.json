@@ -1,12 +1,12 @@
 {
     "name": "PHP DevContainer",
-    "dockerComposeFile": "./compose.yaml",
+    "dockerComposeFile": "../compose.yaml",
     "service": "php",
     "workspaceFolder": "/workspace",
     "remoteEnv": {
         "compose": "docker compose"
     },
-    "shutdownAction": "stopCompose",
+    "shutdownAction": "none",
     "customizations": {
         "vscode": {
             "extensions": [
