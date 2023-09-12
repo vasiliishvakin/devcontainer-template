@@ -53,10 +53,26 @@
 		}
 	}
 
-	metrics /metrics
+	metrics /caddy-metrics
 
-    rewrite / /index.html
+	@pythonPathPrefix {
+		path /python*
+		not file
+	}
+	reverse_proxy @pythonPathPrefix python:8000 {
+		transport http {
+			dial_timeout 5m
+			response_header_timeout 5m
+			expect_continue_timeout 5m
+		}
+	}
 
 	@notStatic not file
-	reverse_proxy @notStatic python:8080
+	reverse_proxy @notStatic python:8000 {
+		transport http {
+			dial_timeout 5m
+			response_header_timeout 5m
+			expect_continue_timeout 5m
+		}
+	}
 }

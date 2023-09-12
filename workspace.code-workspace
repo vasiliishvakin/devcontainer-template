@@ -1,7 +1,8 @@
 {
     "folders": [
         {
-            "path": "."
+            "path": ".",
+            "name": "Python Development"
         }
     ],
     "extensions": {
@@ -25,6 +26,15 @@
         ]
     },
     "settings": {
-        "intelephense.environment.phpVersion": "7.4"
+        "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "pylint.args": [
+            "--disable=missing-module-docstring",
+            "--disable=missing-class-docstring",
+            "--disable=missing-function-docstring",
+            "--max-line-length=120"
+        ],
+        "python.analysis.extraPaths": ["/workspace/app/python"]
     }
 }
