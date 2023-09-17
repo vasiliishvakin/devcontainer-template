@@ -1,0 +1,64 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "Python Development"
+        }
+    ],
+    "settings": {
+        "python.formatting.provider": "none",
+        "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "pylint.args": [
+            "--disable=missing-module-docstring",
+            "--disable=missing-class-docstring",
+            "--disable=missing-function-docstring",
+            "--max-line-length=120"
+        ],
+        "pylint.lintOnChange": true,
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: Main",
+                "type": "python",
+                "request": "launch",
+                "cwd": "${workspaceFolder}/app",
+                "module": "app",
+                "justMyCode": true
+            },
+            {
+                "name": "Python: Attach",
+                "type": "python",
+                "request": "attach",
+                "processId": "${command:pickProcess}",
+                "justMyCode": true
+            },
+            {
+                "name": "Python: Cli",
+                "type": "python",
+                "request": "launch",
+                "cwd": "${workspaceFolder}/app/python",
+                "module": "app",
+                "justMyCode": true,
+                "console": "integratedTerminal",
+                "args": []
+            },
+            {
+                "name": "Python: Tests",
+                "type": "python",
+                "request": "launch",
+                "cwd": "${workspaceFolder}/app/python",
+                "module": "unittest",
+                "justMyCode": true,
+                "console": "integratedTerminal",
+                "args": [
+                    "discover",
+                    "tests"
+                ]
+            }
+        ]
+    }
+}

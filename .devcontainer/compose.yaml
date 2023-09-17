@@ -13,7 +13,8 @@ services:
             - "../:/workspace"
             - "/var/run/docker.sock:/var/run/docker.sock"
             - "./python/stub.py:/usr/local/lib/python-stub/stub.py"
-            - "../data/bash/bash_history:/root/.bash_history"
+            # - "../data/bash/bash_history:/root/.bash_history"
+            - "~/.gitignore:/root/.gitignore"
         extra_hosts:
             - "host.docker.internal:host-gateway"
         working_dir: /workspace/app
@@ -31,7 +32,7 @@ services:
         volumes:
             - "../:/workspace"
             - "../data/caddy/data:/data"
-            - "../data/caddy/config:/data"
+            - "../data/caddy/config:/config"
             - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
         extra_hosts:
             - "host.docker.internal:host-gateway"
