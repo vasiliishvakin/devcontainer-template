@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "Node Development"
+        }
+    ],
+    "launch": {
+        "configurations": [
+            {
+                "type": "Node",
+                "request": "launch",
+                "name": "Node Storage",
+                "skipFiles": [
+                    "<node_internals>/**"
+                ],
+                "program": "${workspaceFolder}/app/node/server.js"
+            },
+            {
+                "name": "Nodemon",
+                "console": "integratedTerminal",
+                "internalConsoleOptions": "neverOpen",
+                "program": "${workspaceFolder}/app/node/server.js",
+                "request": "launch",
+                "restart": true,
+                // "runtimeExecutable": "nodemon", /* ORIGINAL VALUE */
+                "runtimeExecutable": "${workspaceFolder}/app/node/node_modules/nodemon/bin/nodemon.js",
+                "type": "node"
+            }
+        ]
+    }
+}
